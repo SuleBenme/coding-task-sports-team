@@ -49,14 +49,18 @@ function Competitions() {
   return (
     <div>
       <button onClick={fetch}>Test competition</button>
-      {competitions.length > 0 &&
-        competitions.map((competition) => (
-          <CompetitionCard
-            code={competition.code}
-            id={competition.id}
-            name={competition.name}
-          />
-        ))}
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {competitions.length > 0 &&
+          competitions.map((competition, i) => (
+            <CompetitionCard
+              key={i}
+              code={competition.code}
+              id={competition.id}
+              name={competition.name}
+              emblemUrl={competition.emblemUrl}
+            />
+          ))}
+      </div>
     </div>
   );
 }
