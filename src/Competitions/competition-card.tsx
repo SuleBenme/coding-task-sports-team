@@ -3,7 +3,7 @@ import "./index.css";
 
 function CompetitionCard({ code, name, id, emblemUrl }: Competition) {
   return (
-    <div>
+    <div style={{ flex: "1 1 0" }}>
       <div className="container">
         <div
           className="background-image"

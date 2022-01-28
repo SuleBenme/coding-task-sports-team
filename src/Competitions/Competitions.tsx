@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Competition } from "../types";
 import CompetitionCard from "./competition-card";
+import Loader from "../Components/Loader";
 // Free tier
 const CODES = [
   "WC",
@@ -21,7 +22,10 @@ const CODES = [
 
 function Competitions() {
   const [competitions, setCompetitions] = useState<Competition[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const fetch = () => {
+    setLoading(true);
     axios
       .get("http://api.football-data.org/v2/competitions/", {
         headers: {
@@ -37,6 +41,7 @@ function Competitions() {
             competitions_available.push(competition);
           }
         });
+        setLoading(false);
         setCompetitions(competitions_available);
       })
       .catch(function (error) {
@@ -47,21 +52,25 @@ function Competitions() {
       });
   };
   return (
-    <div>
+    <>
       <button onClick={fetch}>Test competition</button>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {competitions.length > 0 &&
-          competitions.map((competition, i) => (
-            <CompetitionCard
-              key={i}
-              code={competition.code}
-              id={competition.id}
-              name={competition.name}
-              emblemUrl={competition.emblemUrl}
-            />
-          ))}
-      </div>
-    </div>
+      {!loading ? (
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
+          {competitions.length > 0 &&
+            competitions.map((competition, i) => (
+              <CompetitionCard
+                key={i}
+                code={competition.code}
+                id={competition.id}
+                name={competition.name}
+                emblemUrl={competition.emblemUrl}
+              />
+            ))}
+        </div>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 }
 
