@@ -1,0 +1,18 @@
+.wrapper {
+  width: 100%;
+}
+.card {
+  display: flex;
+}
+
+.card > div {
+  flex: 1 1 0px;
+  white-space: nowrap;
+}
+
+.card > div:first-child {
+  text-align: right;
+}
+.card > div:nth-child(2) {
+  text-align: center;
+}
