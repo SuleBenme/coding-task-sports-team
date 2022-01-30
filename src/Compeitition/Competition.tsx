@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../Components/Loader";
 import { getDateTo, getDateFrom } from "../utils/dateFormat";
 import { Match } from "../types";
@@ -11,6 +11,7 @@ function Competition() {
   const [competitionName, setCompetitionName] = useState<string>();
   const [matches, setMatches] = useState<Match[]>([]);
   const { competitionId } = useParams<string>();
+  const navigate = useNavigate();
   console.log(competitionId);
 
   useEffect(() => {
@@ -68,6 +69,7 @@ function Competition() {
     <div>
       {!loading ? (
         <>
+          <button onClick={() => navigate("/")}>Go Back</button>
           <h2 style={{ textAlign: "center" }}>{competitionName}</h2>
           <div className="wrapper">
             {matches.length > 0 &&
