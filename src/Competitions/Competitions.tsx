@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Competition } from "../types";
 import CompetitionCard from "./competition-card";
 import Loader from "../Components/Loader";
@@ -24,36 +24,39 @@ function Competitions() {
   const [competitions, setCompetitions] = useState<Competition[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const fetch = () => {
-    setLoading(true);
-    axios
-      .get("http://api.football-data.org/v2/competitions/", {
-        headers: {
-          "X-Auth-Token": "e8e3e8181a1146c08cc86bd0afd03110",
-        },
-      })
-      .then(function (response) {
-        console.log(response);
-        let competitions_available: Competition[] = [];
-        response.data.competitions.forEach((competition: Competition) => {
-          if (CODES.includes(competition.code)) {
-            console.log(competition);
-            competitions_available.push(competition);
-          }
+  useEffect(() => {
+    const fetch = () => {
+      setLoading(true);
+      axios
+        .get("http://api.football-data.org/v2/competitions/", {
+          headers: {
+            "X-Auth-Token": "e8e3e8181a1146c08cc86bd0afd03110",
+          },
+        })
+        .then(function (response) {
+          console.log(response);
+          let competitions_available: Competition[] = [];
+          response.data.competitions.forEach((competition: Competition) => {
+            if (CODES.includes(competition.code)) {
+              console.log(competition);
+              competitions_available.push(competition);
+            }
+          });
+          setLoading(false);
+          setCompetitions(competitions_available);
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
         });
-        setLoading(false);
-        setCompetitions(competitions_available);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-  };
+    };
+
+    fetch();
+  }, []);
   return (
     <>
-      <button onClick={fetch}>Test competition</button>
       {!loading ? (
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {competitions.length > 0 &&
