@@ -1,5 +1,18 @@
 .wrapper {
   width: 100%;
+  max-width: 700px;
+  margin: auto;
+}
+.match-card-wrapper {
+  padding: 10px 8px 10px 9px;
+  background-color: aliceblue;
+  margin: 5px;
+}
+.match-card-wrapper .date {
+  text-align: center;
+  font-weight: 700;
+  font-size: 17px;
+  margin-bottom: 3px;
 }
 .card {
   display: flex;
@@ -7,7 +20,6 @@
 
 .card > div {
   flex: 1 1 0px;
-  white-space: nowrap;
 }
 
 .card > div:first-child {

@@ -8,6 +8,7 @@ import "./index.css";
 
 function Competition() {
   const [loading, setLoading] = useState<boolean>(false);
+  const [competitionName, setCompetitionName] = useState<string>();
   const [matches, setMatches] = useState<Match[]>([]);
   const { competitionId } = useParams<string>();
   console.log(competitionId);
@@ -50,13 +51,14 @@ function Competition() {
             matches.push(test);
           });
           setMatches(matches);
-          setLoading(false);
+          setCompetitionName(response.data.competition.name);
         })
         .catch(function (error) {
           console.log(error);
         })
         .then(function () {
           // always executed
+          setLoading(false);
         });
     };
     fetch();
@@ -66,22 +68,27 @@ function Competition() {
     <div>
       {!loading ? (
         <>
-          <h4>Competition</h4>
+          <h2 style={{ textAlign: "center" }}>{competitionName}</h2>
           <div className="wrapper">
             {matches.length > 0 &&
               matches.map((match) => (
-                <div className="card">
-                  <div>{match.names.homeTeam}</div>
-                  {match.status === "FINISHED" && (
-                    <div>
-                      {match.result.homeTeam} - {match.result.awayTeam}
-                    </div>
-                  )}
-                  {match.status === "SCHEDULED" && <div>NOT STARTED</div>}
-                  {match.status === "POSTPONED" && <div>POSTPONED</div>}
-                  {match.status === "CANCELED" && <div>POSTPONED</div>}
+                <div className="match-card-wrapper">
+                  <div className="date">
+                    {new Date(match.utcDate).toDateString()}
+                  </div>
+                  <div className="card">
+                    <div>{match.names.homeTeam}</div>
+                    {match.status === "FINISHED" && (
+                      <div>
+                        {match.result.homeTeam} - {match.result.awayTeam}
+                      </div>
+                    )}
+                    {match.status === "SCHEDULED" && <div>NOT STARTED</div>}
+                    {match.status === "POSTPONED" && <div>POSTPONED</div>}
+                    {match.status === "CANCELED" && <div>POSTPONED</div>}
 
-                  <div>{match.names.awayTeam}</div>
+                    <div>{match.names.awayTeam}</div>
+                  </div>
                 </div>
               ))}
           </div>
