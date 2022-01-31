@@ -6,10 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project is built with React and Typescript, where I solve a coding task.
 
-## Available Scripts
+## Run the project
 
-In the project directory, you can run:
+In the project directory, to install dependencies run:
+### `yarn`
 
+After install the dependencies run: 
 ### `yarn start`
 
 Runs the app in the development mode.\
@@ -24,15 +26,16 @@ The home page displays available competitions on the free tier. If you click on 
 
 ![alt text](https://res.cloudinary.com/difnpzowu/image/upload/v1643640870/home_page_dgyxg4.png)
 
+
 ### Page listing the competition's matches
 
 ![alt text](https://res.cloudinary.com/difnpzowu/image/upload/v1643640885/matches_page_jk626b.png)
-
 
 ### Improvements
 
 - [ ] Show a default image if the response from the API does not contain an image for every competition.
 - [ ] Implement server-side rendering.
+- [ ] Use environment variables to hide the API token.
 
 ## Sources
 
