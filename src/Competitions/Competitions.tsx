@@ -57,6 +57,7 @@ function Competitions() {
   }, []);
   return (
     <>
+      <h2 style={{ margin: 0, padding: 10 }}>Football tournaments</h2>
       {!loading ? (
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {competitions.length > 0 &&
