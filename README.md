@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Coding task
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Project description
+
+This project is built with React and Typescript, where I solve a coding task.
 
 ## Available Scripts
 
@@ -13,34 +17,23 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+## About the project
+The home page displays available competitions on the free tier. If you click on any of the competitions you will be sent to a new page where a list of matches 2 days in the past and 7 days into the future are displayed.
 
-### `yarn test`
+### Home page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![alt text](https://res.cloudinary.com/difnpzowu/image/upload/v1643640870/home_page_dgyxg4.png)
 
-### `yarn build`
+### Page listing the competition's matches
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![alt text](https://res.cloudinary.com/difnpzowu/image/upload/v1643640885/matches_page_jk626b.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Improvements
 
-### `yarn eject`
+- [ ] Show a default image if the response from the API does not contain an image for every competition.
+- [ ] Implement server-side rendering.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Sources
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://www.svgrepo.com/svg/77510/football
