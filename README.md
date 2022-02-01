@@ -11,7 +11,7 @@ This project is built with React and Typescript, where I solve a coding task.
 In the project directory, to install dependencies run:
 ### `yarn`
 
-After install the dependencies run: 
+After installing the dependencies run: 
 ### `yarn start`
 
 Runs the app in the development mode.\
